@@ -16,20 +16,3 @@ export default defineEventHandler(async () => {
   }
 });
 
-
-/*
-import { defineEventHandler } from 'h3';
-
-const config = useRuntimeConfig()
-
-console.log(config.public);
-//the fuck
-//
-//
-export default defineEventHandler(() => {
-   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${config.public.weather_location}&units=metric&appid=${config.openweathermap_key}`;
-   
-  return encodeURI(apiUrl);
-
-});
-*/
