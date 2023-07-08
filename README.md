@@ -1,8 +1,8 @@
 
 
-Ny random website in Nuxt.js and some bad practice...
+My website in Nuxt.js and some bad practice...
 
-
+please note that project still work in progress.
 
 
 
