@@ -1,0 +1,492 @@
+//import WebSocket from 'ws';
+/*
+const CONSTANTS = {
+  WEBSOCKET_URL: "wss://api.lanyard.rest/socket",
+  HEARTBEAT_PERIOD: 1000 * 30
+};
+
+async function lanyard(opts) {
+  if (!opts) throw new Error("Specify an options object");
+  if (!opts.userId) throw new Error("Specify a user ID");
+  if (opts.socket) {
+    if (!opts.onPresenceUpdate) throw new Error("Specify onPresenceUpdate callback");
+
+    const socket = new WebSocket(CONSTANTS.WEBSOCKET_URL);
+
+    const subscription = typeof opts.userId == "string" ? "subscribe_to_id" : "subscribe_to_ids";
+    let heartbeat = null;
+    socket.on("open", () => {
+      socket.send(
+        JSON.stringify({
+          op: 2,
+          d: {
+            [subscription]: opts.userId,
+          },
+        })
+      );
+      heartbeat = setInterval(() => {
+        socket.send(
+          JSON.stringify({
+            op: 3,
+          })
+        );
+      }, CONSTANTS.HEARTBEAT_PERIOD);
+    });
+    socket.on("message", (data) => {
+      const { t, d } = JSON.parse(data);
+      if (t === "INIT_STATE" || t === "PRESENCE_UPDATE") {
+        opts.onPresenceUpdate(d);
+      }
+    });
+    socket.on("close", (event) => {
+      try {
+        console.log("Socket closed");
+        clearInterval(heartbeat);
+        setTimeout(() => {
+          console.log("Trying to reconnect");
+          lanyard(opts);
+        }, 3000);
+      } catch (err) {
+        console.log("Socket closed");
+      }
+      console.log(event);
+    });
+    return socket;
+  } else {
+    throw new Error("Socket connection is required in server-side usage.");
+  }
+}
+
+export { CONSTANTS, lanyard };
+*/
+
+
+
+//import WebSocket from 'ws';
+
+
+const CONSTANTS = {
+  WEBSOCKET_URL: "wss://api.lanyard.rest/socket",
+  HEARTBEAT_PERIOD: 1000 * 30
+};
+
+
+async function lanyard(opts) {
+  if (!opts) throw new Error("Specify an options object");
+  if (!opts.userId) throw new Error("Specify a user ID");
+  if (!opts.onPresenceUpdate) throw new Error("Specify onPresenceUpdate callback");
+
+  const socket = new WebSocket(CONSTANTS.WEBSOCKET_URL);
+  const subscription = typeof opts.userId === "string" ? "subscribe_to_id" : "subscribe_to_ids";
+  let heartbeat = null;
+
+  socket.addEventListener("open", () => {
+    socket.send(
+      JSON.stringify({
+        op: 2,
+        d: {
+          [subscription]: opts.userId,
+        },
+      })
+    );
+    heartbeat = setInterval(() => {
+      socket.send(
+        JSON.stringify({
+          op: 3,
+        })
+      );
+    }, CONSTANTS.HEARTBEAT_PERIOD);
+  });
+
+  socket.addEventListener("message", ({ data }) => {
+    const { t, d } = JSON.parse(data);
+    if (t === "INIT_STATE" || t === "PRESENCE_UPDATE") {
+      opts.onPresenceUpdate(d);
+    }
+  });
+
+  socket.onclose = (event) => {
+    try {
+      console.log("Socket closed");
+      clearInterval(heartbeat);
+      setTimeout(() => {
+        console.log("Trying to reconnect");
+        lanyard(opts);
+      }, 3000);
+    } catch (err) {
+      console.log("Socket closed");
+    }
+    console.log(event);
+  };
+
+  return socket;
+}
+
+export { lanyard };
+
+
+/*
+
+import WebSocket from 'ws';
+
+const CONSTANTS = {
+  WEBSOCKET_URL: "wss://api.lanyard.rest/socket",
+  HEARTBEAT_PERIOD: 1000 * 30
+};
+
+async function lanyard(opts) {
+  if (!opts) throw new Error("Specify an options object");
+  if (!opts.userId) throw new Error("Specify a user ID");
+  if (!opts.onPresenceUpdate) throw new Error("Specify onPresenceUpdate callback");
+
+  const socket = new WebSocket(CONSTANTS.WEBSOCKET_URL);
+  const subscription = typeof opts.userId === "string" ? "subscribe_to_id" : "subscribe_to_ids";
+  let heartbeat = null;
+  
+  socket.addEventListener("open", () => {
+    socket.send(
+      JSON.stringify({
+        op: 2,
+        d: {
+          [subscription]: opts.userId,
+        },
+      })
+    );
+    heartbeat = setInterval(() => {
+      socket.send(
+        JSON.stringify({
+          op: 3,
+        })
+      );
+    }, CONSTANTS.HEARTBEAT_PERIOD);
+  });
+  
+  socket.addEventListener("message", ({ data }) => {
+    const { t, d } = JSON.parse(data);
+    if (t === "INIT_STATE" || t === "PRESENCE_UPDATE") {
+      opts.onPresenceUpdate(d);
+    }
+  });
+  
+  socket.onclose = (event) => {
+    try {
+      console.log("Socket closed");
+      clearInterval(heartbeat);
+      setTimeout(() => {
+        console.log("Trying to reconnect");
+        lanyard(opts);
+      }, 3000);
+    } catch (err) {
+      console.log("Socket closed");
+    }
+    console.log(event);
+  };
+
+  return socket;
+}
+
+export { CONSTANTS, lanyard };
+
+
+
+
+import WebSocket from 'ws';
+
+const CONSTANTS = {
+  WEBSOCKET_URL: "wss://api.lanyard.rest/socket",
+  HEARTBEAT_PERIOD: 1000 * 30
+};
+
+async function lanyard(opts) {
+  if (!opts) throw new Error("Specify an options object");
+  if (!opts.userId) throw new Error("Specify a user ID");
+  if (!opts.onPresenceUpdate) throw new Error("Specify onPresenceUpdate callback");
+
+  const socket = new WebSocket(CONSTANTS.WEBSOCKET_URL);
+  const subscription = typeof opts.userId === "string" ? "subscribe_to_id" : "subscribe_to_ids";
+  let heartbeat = null;
+  
+  socket.addEventListener("open", () => {
+    socket.send(
+      JSON.stringify({
+        op: 2,
+        d: {
+          [subscription]: opts.userId,
+        },
+      })
+    );
+    heartbeat = setInterval(() => {
+      socket.send(
+        JSON.stringify({
+          op: 3,
+        })
+      );
+    }, CONSTANTS.HEARTBEAT_PERIOD);
+  });
+  
+  socket.addEventListener("message", ({ data }) => {
+    const { t, d } = JSON.parse(data);
+    if (t === "INIT_STATE" || t === "PRESENCE_UPDATE") {
+      opts.onPresenceUpdate(d);
+    }
+  });
+  
+  socket.onclose = (event) => {
+    try {
+      console.log("Socket closed");
+      clearInterval(heartbeat);
+      setTimeout(() => {
+        console.log("Trying to reconnect");
+        lanyard(opts);
+      }, 3000);
+    } catch (err) {
+      console.log("Socket closed");
+    }
+    console.log(event);
+  };
+
+  return socket;
+}
+
+export { CONSTANTS, lanyard };
+
+
+const CONSTANTS = {
+  WEBSOCKET_URL: "wss://api.lanyard.rest/socket",
+  HEARTBEAT_PERIOD: 1000 * 30
+};
+
+async function lanyard(opts) {
+  if (!opts) throw new Error("Specify an options object");
+  if (!opts.userId) throw new Error("Specify a user ID");
+  if (!opts.onPresenceUpdate) throw new Error("Specify onPresenceUpdate callback");
+
+  const socket = new WebSocket(CONSTANTS.WEBSOCKET_URL);
+  const subscription = typeof opts.userId == "string" ? "subscribe_to_id" : "subscribe_to_ids";
+  let heartbeat = null;
+  socket.addEventListener("open", () => {
+    socket.send(
+      JSON.stringify({
+        op: 2,
+        d: {
+          [subscription]: opts.userId,
+        },
+      })
+    );
+    heartbeat = setInterval(() => {
+      socket.send(
+        JSON.stringify({
+          op: 3,
+        })
+      );
+    }, CONSTANTS.HEARTBEAT_PERIOD);
+  });
+  socket.addEventListener("message", ({ data }) => {
+    const { t, d } = JSON.parse(data);
+    if (t === "INIT_STATE" || t === "PRESENCE_UPDATE") {
+      opts.onPresenceUpdate(d);
+    }
+  });
+  socket.onclose = (event) => {
+    try {
+      console.log("Socket closed");
+      clearInterval(heartbeat);
+      setTimeout(() => {
+        console.log("Trying to reconnect");
+        lanyard(opts);
+      }, 3000);
+    } catch (err) {
+      console.log("Socket closed");
+    }
+    console.log(event);
+  };
+
+  return socket;
+}
+
+export { CONSTANTS, lanyard };
+
+
+
+import https from 'https';
+import WebSocket from 'ws';
+
+const CONSTANTS = {
+  API_URL: "https://api.lanyard.rest/v1",
+  WEBSOCKET_URL: "wss://api.lanyard.rest/socket",
+  HEARTBEAT_PERIOD: 1000 * 30
+};
+
+async function lanyard(opts) {
+  if (!opts) throw new Error("Specify an options object");
+  if (!opts.userId) throw new Error("Specify a user ID");
+  if (opts.socket) {
+    if (!opts.onPresenceUpdate) throw new Error("Specify onPresenceUpdate callback");
+
+    const socket = new WebSocket(CONSTANTS.WEBSOCKET_URL);
+    const subscription = typeof opts.userId == "string" ? "subscribe_to_id" : "subscribe_to_ids";
+    let heartbeat = null;
+
+    socket.addEventListener("open", () => {
+      socket.send(
+        JSON.stringify({
+          op: 2,
+          d: {
+            [subscription]: opts.userId,
+          },
+        })
+      );
+      heartbeat = setInterval(() => {
+        socket.send(
+          JSON.stringify({
+            op: 3,
+          })
+        );
+      }, CONSTANTS.HEARTBEAT_PERIOD);
+    });
+
+    socket.addEventListener("message", ({ data }) => {
+      const { t, d } = JSON.parse(data);
+      if (t === "INIT_STATE" || t === "PRESENCE_UPDATE") {
+        opts.onPresenceUpdate(d);
+      }
+    });
+
+    socket.addEventListener("close", (event) => {
+      try {
+        console.log("Socket closed");
+        clearInterval(heartbeat);
+        setTimeout(() => {
+          console.log("Trying to reconnect");
+          lanyard(opts);
+        }, 3000);
+      } catch (err) {
+        console.log("Socket closed");
+      }
+      console.log(event);
+    });
+
+    return socket;
+  } else {
+    if (typeof opts.userId == "string") {
+      const res = await new Promise((resolve, reject) => {
+        https.get(`${CONSTANTS.API_URL}/users/${opts.userId}`, (response) => {
+          let data = '';
+          response.on('data', (chunk) => {
+            data += chunk;
+          });
+          response.on('end', () => {
+            resolve(data);
+          });
+        }).on('error', (error) => {
+          reject(error);
+        });
+      });
+
+      const body = JSON.parse(res);
+      if (!body.success) throw new Error(body.error?.message || "An invalid error occurred");
+      return body.data;
+    } else {
+      const val = [];
+      for (const userId of opts.userId) {
+        const res = await new Promise((resolve, reject) => {
+          https.get(`${CONSTANTS.API_URL}/users/${userId}`, (response) => {
+            let data = '';
+            response.on('data', (chunk) => {
+              data += chunk;
+            });
+            response.on('end', () => {
+              resolve(data);
+            });
+          }).on('error', (error) => {
+            reject(error);
+          });
+        });
+
+        const body = JSON.parse(res);
+        if (!body.success) throw new Error(body.error?.message || "An invalid error occurred");
+        val.push(body.data);
+      }
+      return val;
+    }
+  }
+}
+
+export { CONSTANTS, lanyard };
+
+
+
+const CONSTANTS = {
+  API_URL: "https://api.lanyard.rest/v1",
+  WEBSOCKET_URL: "wss://api.lanyard.rest/socket",
+  HEARTBEAT_PERIOD: 1000 * 30
+};
+
+async function lanyard(opts) {
+  if (!opts) throw new Error("Specify an options object");
+  if (!opts.userId) throw new Error("Specify a user ID");
+  if (opts.socket) {
+    if (!opts.onPresenceUpdate) throw new Error("Specify onPresenceUpdate callback");
+    const supportsWebSocket = "WebSocket" in window || "MozWebSocket" in window;
+    if (!supportsWebSocket) throw new Error("Browser doesn't support WebSocket connections.", );
+    const socket = new WebSocket(CONSTANTS.WEBSOCKET_URL);
+    const subscription = typeof opts.userId == "string" ? "subscribe_to_id" : "subscribe_to_ids";
+    let heartbeat = null;
+    socket.addEventListener("open", () => {
+      socket.send(
+        JSON.stringify({
+          op: 2,
+          d: {
+            [subscription]: opts.userId,
+          },
+        })
+      );
+      heartbeat = setInterval(() => {
+        socket.send(
+          JSON.stringify({
+            op: 3,
+          })
+        );
+      }, CONSTANTS.HEARTBEAT_PERIOD);
+    });
+    socket.addEventListener("message", ({ data }) => {
+      const { t, d } = JSON.parse(data);
+      if (t === "INIT_STATE" || t === "PRESENCE_UPDATE") {
+        opts.onPresenceUpdate(d);
+      }
+    });
+    socket.onclose = (event) => {
+      try {
+        console.log("Socket closed");
+        clearInterval(heartbeat);
+        setTimeout(() => {
+          console.log("Trying to reconnect");
+          lanyard(opts);
+        }, 3000);
+      } catch (err) {
+        console.log("Socket closed");
+      }
+      console.log(event);
+    };
+    return socket;
+  } else {
+    if (typeof opts.userId == "string") {
+      const res = await fetch(`${CONSTANTS.API_URL}/users/${opts.userId}`);
+      const body = await res.json();
+      if (!body.success) throw new Error(body.error?.message || "An invalid error occured");
+      return body.data;
+    } else {
+      const val = [];
+      for (const userId of opts.userId) {
+        const res = await fetch(`${CONSTANTS.API_URL}/users/${userId}`);
+        const body = await res.json();
+        if (!body.success) throw new Error(body.error?.message || "An invalid error occured");
+        val.push(body.data);
+      }
+      return val;
+    }
+  }
+}
+
+export { CONSTANTS, lanyard };
+*/

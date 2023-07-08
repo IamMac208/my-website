@@ -1,0 +1,113 @@
+<template>
+  <div class="container sl-1">
+    <div class="flex inline-block">
+      <h1 class="flex items-center hover:scale-110 duration-300 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-pink-600 text-bold">
+        Hiya
+      </h1>
+      <small>
+        <h1
+          @mouseenter="emoji = '❤️'"
+          @mouseleave="emoji = '👋'"
+          class="inline-flex"
+        >
+          {{ emoji }}
+        </h1>
+      </small>
+    </div>
+
+    <div>
+            <div>{{ weather }}</div>
+      <br />
+      <p class="ml-0 w-fit border-b-2 border-teal-300 mb-4">
+        Hi, my name is
+        <button>
+          <b>
+            <span @click="toggleName">{{ name }}.</span>
+          </b>
+        </button>
+      </p>
+      <p>
+        I'm a
+<tooltip text='<span class="text-sm"> 2008/04/03</span>' mode="top"><span :style="{ color: 'blue' }" v-html="age"></span></tooltip>-year-old kid who loves coding, astronomy, and space stuff.
+
+      Also, you can find me on Discord as
+      <span class="text-pink-400">
+
+<a :href="'https://discord.com/users/' + DiscordData.discord_user.id">
+	{{ DiscordData.discord_user.username }}
+</a> </span>
+   
+
+      </p>
+    </div>
+  </div>
+</template>
+
+<script>
+import { lanyard } from './utils/lanyard.js';
+import Tooltip from './components/Tooltip.vue';
+
+
+export default {
+  components: {
+         Tooltip,
+  },
+data() {
+    return {
+      DiscordData: 'N/A',
+      name: 'Mac',
+      age: 'N/A',
+      weather: 'N/A',
+      emoji: '👋',
+    };
+  },
+  created() {
+
+if (process.client) {
+    lanyard({
+      userId: "829156179803504670",
+      socket: true,
+      onPresenceUpdate: (data) => {
+          this.DiscordData = data;
+      },
+    });
+
+}
+
+    setInterval(() => {
+      this.age = this.calculateAge();
+    }, 1000);
+
+
+$fetch('/api/weather')
+    .then(weather => {
+     this.weather = `${this.$config.public.weather_location}: ${weather.main.temp}°C, ${weather.weather[0].description}, ${weather.wind.speed}km/h`;
+    })
+    .catch(error => {
+      console.error(error);
+    });
+
+
+
+//this.weather = `${this.$config.public.weather_locatin}: ${weather.main.temp}°C, ${weather.weather[0].description}, ${weather.wind.speed}km/h`;
+
+
+
+
+},
+ methods: {
+    calculateAge() {
+      const now = new Date();
+      const birth = new Date(2008, 4, 3);
+
+
+      const difference = now - birth;
+      const age = difference / 1000 / 60 / 60 / 24 / 365;
+      return age.toFixed(6);
+    },
+    toggleName() {
+      this.name = this.name === 'Mac' ? 'Windows' : 'Mac';
+    },
+  },
+};
+</script>
