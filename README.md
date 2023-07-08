@@ -1,7 +1,6 @@
-My portfolio portable to server side rendering using Nuxt.js
 
 
-
+Ny random website in Nuxt.js and some bad practice...
 
 
 
