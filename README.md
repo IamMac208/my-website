@@ -2,8 +2,7 @@
 
 My website in Nuxt.js and some bad practice...
 
-please note that project still work in progress.
-
+currently still work in progress
 
 
 
