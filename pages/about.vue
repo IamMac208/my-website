@@ -28,15 +28,16 @@
       </p>
       <p>
         I'm a
-<tooltip text='<span class="text-sm"> 2008/04/03</span>' mode="top"><span :style="{ color: 'blue' }" v-html="age"></span></tooltip>-year-old kid who loves coding, astronomy, and space stuff.
+<tooltip text='<span class="text-sm">2008/04/03</span>' mode="top"><span :style="{ color: 'blue' }" v-html="age"></span></tooltip>-year-old kid who loves coding, astronomy, and space stuff.
 
-      Also, you can find me on Discord as
-      <span class="text-pink-400">
+      
 
-<a :href="'https://discord.com/users/' + DiscordData.discord_user.id">
+<!-- <a :href="'https://discord.com/users/' + DiscordData.discord_user.id">
 	{{ DiscordData.discord_user.username }}
-</a> </span>
-   
+</a> -->
+
+
+
 
       </p>
     </div>
@@ -54,7 +55,7 @@ export default {
   },
 data() {
     return {
-      DiscordData: 'N/A',
+      DiscordData: '',
       name: 'Mac',
       age: 'N/A',
       weather: 'N/A',
