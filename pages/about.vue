@@ -1,5 +1,4 @@
-<template>
-  <div class="container sl-1">
+<template> <div class="container sl-1">
     <div class="flex inline-block">
       <h1 class="flex items-center hover:scale-110 duration-300 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-pink-600 text-bold">
         Hiya
@@ -16,7 +15,7 @@
     </div>
 
     <div>
-            <div>{{ weather }}</div>
+<div class="text-md text-gray-300 font-bold">{{ locationAndtime }}<br/>{{ weather }}</div>
       <br />
       <p class="ml-0 w-fit border-b-2 border-teal-300 mb-4">
         Hi, my name is
@@ -27,16 +26,8 @@
         </button>
       </p>
       <p>
-        I'm a
-<tooltip text='<span class="text-sm">2008/04/03</span>' mode="top"><span :style="{ color: 'blue' }" v-html="age"></span></tooltip>-year-old kid who loves coding, astronomy, and space stuff.
-
-      
-
-<!-- <a :href="'https://discord.com/users/' + DiscordData.discord_user.id">
-	{{ DiscordData.discord_user.username }}
-</a> -->
-
-
+      I am a
+<tooltip text='<span class="text-sm">2008/04/03</span>' mode="top"><span :style="{ color: 'blue' }" v-html="age"></span></tooltip>-year-old kid who loves coding, music, and space stuff. Also i study in <a href="https://en.m.wikipedia.org/wiki/Nonformal_learning">non-formal education</a>.
 
 
       </p>
@@ -45,7 +36,6 @@
 </template>
 
 <script>
-import { lanyard } from './utils/lanyard.js';
 import Tooltip from './components/Tooltip.vue';
 
 
@@ -55,34 +45,25 @@ export default {
   },
 data() {
     return {
-      DiscordData: '',
       name: 'Mac',
       age: 'N/A',
       weather: 'N/A',
       emoji: '👋',
+      locationAndtime: 'N/A',
     };
   },
+
+mounted() {},
   created() {
 
-if (process.client) {
-    lanyard({
-      userId: "829156179803504670",
-      socket: true,
-      onPresenceUpdate: (data) => {
-          this.DiscordData = data;
-      },
-    });
-
-}
-
-    setInterval(() => {
+setInterval(() => {
       this.age = this.calculateAge();
     }, 1000);
 
 
 $fetch('/api/weather')
     .then(weather => {
-     this.weather = `${this.$config.public.weather_location}: ${weather.main.temp}°C, ${weather.weather[0].description}, ${weather.wind.speed}km/h`;
+     this.weather = `${weather.main.temp}°C, ${weather.weather[0].description}, ${weather.wind.speed}km/h`;
     })
     .catch(error => {
       console.error(error);
@@ -90,8 +71,7 @@ $fetch('/api/weather')
 
 
 
-//this.weather = `${this.$config.public.weather_locatin}: ${weather.main.temp}°C, ${weather.weather[0].description}, ${weather.wind.speed}km/h`;
-
+setInterval(this.DateAndTime, 1000, this.$config.public);
 
 
 
@@ -105,10 +85,35 @@ $fetch('/api/weather')
       const difference = now - birth;
       const age = difference / 1000 / 60 / 60 / 24 / 365;
       return age.toFixed(6);
+
     },
+
+
     toggleName() {
       this.name = this.name === 'Mac' ? 'Windows' : 'Mac';
     },
+  DateAndTime(pubconfig) {
+ 
+    const date = new Date();
+
+      const options = {
+
+         hour: 'numeric',
+         minute: 'numeric',
+         second: 'numeric',
+         hour12: true,
+         timeZone: 'Asia/Bangkok',
+         day: 'numeric',
+         month: 'short',
+         year: 'numeric'
+}
+
+      const DateFmt = new Intl.DateTimeFormat('en-US', options);
+      this.locationAndtime = `${pubconfig.weather_location}: ${DateFmt.format(date)}`;
+
+
+     },
   },
+
 };
 </script>

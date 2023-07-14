@@ -27,7 +27,6 @@
   border-radius: 4px;
   font-size: 14px;
   opacity: 0;
-
   transition: opacity 0.6s ease;
   white-space: nowrap;
 }
