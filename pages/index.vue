@@ -1,11 +1,12 @@
-<script setup lang="ts">
-const route = useRoute()
-</script>
-
 <template>
   <div>
-    <p>Current route: {{ route.path }}</p>
+   
+<h1 class="text-center">Nothing here.</h1>
 
  
   </div>
 </template>
+<script lang="ts">
+
+
+</script>

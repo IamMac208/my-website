@@ -18,7 +18,7 @@
 <div class="text-md text-gray-300 font-bold">{{ locationAndtime }}<br/>{{ weather }}</div>
       <br />
       <p class="ml-0 w-fit border-b-2 border-teal-300 mb-4">
-        Hey i am mac
+        Hey i am
         <button>
           <b>
             <span @click="toggleName">{{ name }}.</span>
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import Tooltip from './components/Tooltip.vue';
+import Tooltip from '@/components/Tooltip.vue';
 
 
 export default {
