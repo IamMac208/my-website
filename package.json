@@ -16,9 +16,5 @@
     "nuxt": "^3.6.1",
     "postcss": "^8.4.24",
     "tailwindcss": "^3.3.2"
-  },
-  "dependencies": {
-    "node-fetch": "^3.3.1",
-    "node-https": "^0.1.3"
   }
 }
