@@ -1,6 +1,5 @@
-<script lang="ts" setup></script>
-
 <template>
+
   <div>
     <!-- Photo Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -17,7 +16,7 @@
             <div
               class="text-xs text-stone-100 p-1 rounded-md h-16 border border-gray-700 bg-gray-900"
             >
-              Test description
+              Testtttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt description
             </div>
           </div>
         </div>
@@ -26,4 +25,6 @@
   </div>
 </template>
 
-<style scoped></style>
+<script lang="ts">
+
+</script>
