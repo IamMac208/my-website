@@ -1,13 +1,19 @@
 <template>
   <div class="tooltip-container">
-    <span class="tooltip-trigger" @mouseover="showTooltip = true" @mouseout="showTooltip = false">
+    <span
+      class="tooltip-trigger"
+      @mouseover="showTooltip = true"
+      @mouseout="showTooltip = false"
+    >
       <slot></slot>
     </span>
     <!--  <div class="tooltip" :class="mode" v-show="showTooltip"> -->
 
-     <div class="tooltip" :class="mode" :style="{ opacity: showTooltip ? 1 : 0 }">
-
-
+    <div
+      class="tooltip"
+      :class="mode"
+      :style="{ opacity: showTooltip ? 1 : 0 }"
+    >
       <span v-html="text"></span>
     </div>
   </div>
@@ -65,8 +71,8 @@ export default {
     },
     mode: {
       type: String,
-      default: 'top',
-      validator: value => ['top', 'bottom', 'left', 'right'].includes(value),
+      default: "top",
+      validator: (value) => ["top", "bottom", "left", "right"].includes(value),
     },
   },
   data() {

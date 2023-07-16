@@ -3,23 +3,19 @@
 @tailwind utilities;
 
 :root {
-  --font-color: #E6E6E6;
+  --font-color: #e6e6e6;
   --bg-color: #18181b;
 }
 
 body {
-   
   font-size: calc(10px + 0.33vw);
-  font-family:  monospace;
+  font-family: monospace;
   scroll-behavior: smooth;
   user-select: none;
   color: var(--font-color);
   background-color: var(--bg-color);
   overflow-x: hidden;
-
-
 }
-
 
 .container {
   padding: 5vh 6vw;

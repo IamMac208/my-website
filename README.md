@@ -1,11 +1,6 @@
-
-
 My website in Nuxt.js and some bad practice...
 
 currently still work in progress
-
-
-
 
 ## Setup
 
