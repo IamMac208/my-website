@@ -71,14 +71,14 @@ export default {
     },
     mode: {
       type: String,
-      default: "top",
-      validator: (value) => ["top", "bottom", "left", "right"].includes(value),
+      default: 'top',
+      validator: (value) => ['top', 'bottom', 'left', 'right'].includes(value),
     },
   },
   data() {
     return {
       showTooltip: false,
-    };
+    }
   },
-};
+}
 </script>

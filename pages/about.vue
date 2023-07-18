@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import Tooltip from "@/components/Tooltip.vue";
+import Tooltip from '@/components/Tooltip.vue'
 
 export default {
   components: {
@@ -52,62 +52,62 @@ export default {
   },
   data() {
     return {
-      name: "Mac",
-      age: "N/A",
-      weather: "N/A",
-      emoji: "👋",
-      locationAndtime: "N/A",
-    };
+      name: 'Mac',
+      age: 'N/A',
+      weather: 'N/A',
+      emoji: '👋',
+      locationAndtime: 'N/A',
+    }
   },
 
   mounted() {},
   created() {
     setInterval(() => {
-      this.age = this.calculateAge();
-    }, 1000);
+      this.age = this.calculateAge()
+    }, 1000)
 
-    $fetch("/api/weather")
+    $fetch('/api/weather')
       .then((weather) => {
-        this.weather = `${weather.main.temp}°C, ${weather.weather[0].description}, ${weather.wind.speed}km/h`;
+        this.weather = `${weather.main.temp}°C, ${weather.weather[0].description}, ${weather.wind.speed}km/h`
       })
       .catch((error) => {
-        console.error(error);
-      });
+        console.error(error)
+      })
 
-    setInterval(this.DateAndTime, 1000, this.$config.public);
+    setInterval(this.DateAndTime, 1000, this.$config.public)
   },
   methods: {
     calculateAge() {
-      const now = new Date();
-      const birth = new Date(2008, 4, 3);
+      const now = new Date()
+      const birth = new Date(2008, 4, 3)
 
-      const difference = now - birth;
-      const age = difference / 1000 / 60 / 60 / 24 / 365;
-      return age.toFixed(6);
+      const difference = now - birth
+      const age = difference / 1000 / 60 / 60 / 24 / 365
+      return age.toFixed(6)
     },
 
     toggleName() {
-      this.name = this.name === "Mac" ? "Windows" : "Mac";
+      this.name = this.name === 'Mac' ? 'Windows' : 'Mac'
     },
     DateAndTime(pubconfig) {
-      const date = new Date();
+      const date = new Date()
 
       const options = {
-        hour: "numeric",
-        minute: "numeric",
-        second: "numeric",
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
         hour12: true,
-        timeZone: "Asia/Bangkok",
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-      };
+        timeZone: 'Asia/Bangkok',
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+      }
 
-      const DateFmt = new Intl.DateTimeFormat("en-US", options);
+      const DateFmt = new Intl.DateTimeFormat('en-US', options)
       this.locationAndtime = `${pubconfig.weather_location}: ${DateFmt.format(
         date,
-      )}`;
+      )}`
     },
   },
-};
+}
 </script>
