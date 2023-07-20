@@ -1,7 +1,14 @@
 <template>
-  <div>
-   
-    <h1 class="text-center">Nothing here.</h1>
+  <div class="dark">
+ 
+    <PhotoBox
+      :img="'https://placehold.co/600x400'" 
+      :message="dialogueMessage">
+test
+
+</PhotoBox>
+
+
   </div>
 </template>
 <script lang="ts">

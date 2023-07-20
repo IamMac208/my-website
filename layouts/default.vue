@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="flex mb-4">
+    <div class="flex mb-4 text-slate-100 dark:text-slate-200">
       <div class="p-1 flex space-x-2 inline-block">
         <NuxtLink
           to="/"
-          class="flex font-bold text-base text-center items-center p-2 bg-stone-800 rounded-lg w-cover h-10 border-2 border-zinc-500 hover:border-zinc-100"
+          class="flex font-bold text-base text-center items-center p-2 bg-indigo-400 dark:bg-stone-800 rounded-lg w-cover h-10 border-2 dark:border-zinc-500 dark:hover:border-zinc-100 hover:border-gray-300"
         >
           <img
             class="mr-1 w-4 h-4"
@@ -16,8 +16,8 @@
       <div class="p-1 flex space-x-2 inline-block">
         <NuxtLink
           to="/about"
-          class="flex font-bold text-base text-center items-center p-2 bg-stone-800 rounded-lg w-fit h-10 border-2 border-zinc-500 hover:border-zinc-100"
-        >
+          class="flex font-bold text-base text-center items-center p-2 bg-indigo-400 dark:bg-stone-800 rounded-lg w-cover h-10 border-2 dark:border-zinc-500 dark:hover:border-zinc-100 hover:border-gray-300"
+      >
           <img
             class="mr-1 w-4 h-4"
             src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4d1.svg"
@@ -28,7 +28,7 @@
       <div class="p-1 flex space-x-2 inline-block">
         <NuxtLink
           to="/photos"
-          class="flex font-bold text-base text-center items-center p-2 bg-stone-800 rounded-lg w-fit h-10 border-2 border-zinc-500 hover:border-zinc-100"
+          class="flex font-bold text-base text-center items-center p-2 bg-indigo-400 dark:bg-stone-800 rounded-lg w-cover h-10 border-2 dark:border-zinc-500 dark:hover:border-zinc-100 hover:border-gray-300"
         >
           <img
             class="mr-1 w-4 h-4"

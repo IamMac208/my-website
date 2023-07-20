@@ -1,46 +1,26 @@
 <template>
   <div>
-    <div class="dialogue bg-dark" :class="{ 'show-dialogue': animate }">
-      <div class="bg-gray-800 rounded-t-md">
+    <div @click="closeDialogue" class="dialogue shadow-md" :class="{ 'show-dialogue': animate }">
+
+      <div class="dark:bg-gray-800 rounded-md">
         <img
-          class="w-72 h-60 object-cover"
-          :src="img"
-          alt="Avatar"
+          class="w-72 h-60 object-cover rounded-lg"
+          src="https://mayumi.vercel.app/banner.jpg"
+          alt=""
           :style="{ transform: animate ? 'rotate(360deg)' : 'none' }"
         />
 
-        <div
-          class="h-16 p-2 rounded-md border-2 border-cyan-900 bg-gray-800"
-          :class="{ 'fade-in': animate }"
-        >
-          {{ message }}
-        </div>
-
-        <button
-          class="p-2 rounded-md text-md bg-cyan-900 mt-2 right-0"
-          @click="toggleAnimation"
-        >
-          Close
-        </button>
       </div>
-    </div>
+   
+</div>
 
-    <button @click="toggleAnimation">Open</button>
+    <button @click="toggleAnimation">test</button>
+
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    img: {
-      type: String,
-      required: true,
-    },
-    message: {
-      type: String,
-      required: true,
-    },
-  },
   data() {
     return {
       animate: false,
@@ -49,6 +29,11 @@ export default {
   methods: {
     toggleAnimation() {
       this.animate = !this.animate;
+    },
+    closeDialogue() {
+      if (this.animate) {
+        this.animate = false;
+      }
     },
   },
 };

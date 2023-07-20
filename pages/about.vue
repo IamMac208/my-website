@@ -18,7 +18,7 @@
     </div>
 
     <div>
-      <div class="text-md text-gray-300 font-bold">
+      <div class="text-md text-slate-400 dark:text-gray-300 font-bold">
         {{ locationAndtime }}<br />{{ weather }}
       </div>
       <br />
