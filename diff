@@ -1,0 +1,1017 @@
+diff --git a/.prettierrc b/.prettierrc
+index b2095be..78824c3 100644
+--- a/.prettierrc
++++ b/.prettierrc
+@@ -1,4 +1,6 @@
+ {
+-  "semi": false,
+-  "singleQuote": true
++	"semi": false,
++	"singleQuote": true,
++	"useTabs": true,
++	"tabWidth": 1
+ }
+diff --git a/app.vue b/app.vue
+index 8e7f33e..ef03d1e 100644
+--- a/app.vue
++++ b/app.vue
+@@ -1,7 +1,7 @@
+ <template>
+-  <div>
+-    <NuxtLayout>
+-      <NuxtPage />
+-    </NuxtLayout>
+-  </div>
++	<div>
++		<NuxtLayout>
++			<NuxtPage />
++		</NuxtLayout>
++	</div>
+ </template>
+diff --git a/assets/css/styles.css b/assets/css/styles.css
+index e8e65e0..e7a4696 100644
+--- a/assets/css/styles.css
++++ b/assets/css/styles.css
+@@ -2,37 +2,33 @@
+ @tailwind components;
+ @tailwind utilities;
+ 
+-
+-
+ :root {
+-  /* Light theme colors */
+-  --font-color-light: #444444; /* black color */
+-  --bg-color-light: #E8E8E8; /* white background */
++	/* Light theme colors */
++	--font-color-light: #444444; /* black color */
++	--bg-color-light: #e8e8e8; /* white background */
+ 
+-  /* Dark theme colors */
+-  --font-color-dark: #ffffff; /* white color */
+-  --bg-color-dark: #18181b; /* dark background */
++	/* Dark theme colors */
++	--font-color-dark: #ffffff; /* white color */
++	--bg-color-dark: #18181b; /* dark background */
+ }
+ 
+ @media (prefers-color-scheme: dark) {
+-  body {
+-    color: var(--font-color-dark);
+-    background-color: var(--bg-color-dark);
+-  }
++	body {
++		color: var(--font-color-dark);
++		background-color: var(--bg-color-dark);
++	}
+ }
+ 
+ body {
+-  font-size: calc(10px + 0.33vw);
+-  font-family: monospace;
+-  scroll-behavior: smooth;
+-  user-select: none;
+-  color: var(--font-color-light);
+-  background-color: var(--bg-color-light);
+-  overflow-x: hidden;
++	font-size: calc(10px + 0.33vw);
++	font-family: monospace;
++	scroll-behavior: smooth;
++	user-select: none;
++	color: var(--font-color-light);
++	background-color: var(--bg-color-light);
++	overflow-x: hidden;
+ }
+ 
+-
+-
+ /*
+ :root {
+   --font-color: #e6e6e6;
+@@ -56,18 +52,18 @@ body {
+ */
+ 
+ .container {
+-  padding: 5vh 6vw;
++	padding: 5vh 6vw;
+ }
+ 
+ h1 {
+-  font-size: 4.5em;
+-  font-weight: 500;
+-  margin-bottom: 0;
++	font-size: 4.5em;
++	font-weight: 500;
++	margin-bottom: 0;
+ }
+ 
+ p {
+-  font-size: 1.6em;
+-  font-weight: 300;
+-  line-height: 1.4;
+-  max-width: 28em;
++	font-size: 1.6em;
++	font-weight: 300;
++	line-height: 1.4;
++	max-width: 28em;
+ }
+diff --git a/components/PhotoBox.vue b/components/PhotoBox.vue
+index a827a52..ad619e2 100644
+--- a/components/PhotoBox.vue
++++ b/components/PhotoBox.vue
+@@ -1,76 +1,75 @@
+ <template>
+-  <div>
+-    <div @click="closeDialogue" class="dialogue shadow-md" :class="{ 'show-dialogue': animate }">
++	<div>
++		<div
++			@click="closeDialogue"
++			class="dialogue shadow-md"
++			:class="{ 'show-dialogue': animate }"
++		>
++			<div class="dark:bg-gray-800 rounded-md">
++				<img
++					class="w-72 h-60 object-cover rounded-lg"
++					src="https://mayumi.vercel.app/banner.jpg"
++					alt=""
++					:style="{ transform: animate ? 'rotate(360deg)' : 'none' }"
++				/>
++			</div>
++		</div>
+ 
+-      <div class="dark:bg-gray-800 rounded-md">
+-        <img
+-          class="w-72 h-60 object-cover rounded-lg"
+-          src="https://mayumi.vercel.app/banner.jpg"
+-          alt=""
+-          :style="{ transform: animate ? 'rotate(360deg)' : 'none' }"
+-        />
+-
+-      </div>
+-   
+-</div>
+-
+-    <button @click="toggleAnimation">test</button>
+-
+-  </div>
++		<button @click="toggleAnimation">test</button>
++	</div>
+ </template>
+ 
+ <script>
+ export default {
+-  data() {
+-    return {
+-      animate: false,
+-    };
+-  },
+-  methods: {
+-    toggleAnimation() {
+-      this.animate = !this.animate;
+-    },
+-    closeDialogue() {
+-      if (this.animate) {
+-        this.animate = false;
+-      }
+-    },
+-  },
+-};
++	data() {
++		return {
++			animate: false,
++		}
++	},
++	methods: {
++		toggleAnimation() {
++			this.animate = !this.animate
++		},
++		closeDialogue() {
++			if (this.animate) {
++				this.animate = false
++			}
++		},
++	},
++}
+ </script>
+ 
+ <style>
+ .dialogue {
+-  display: flex;
+-  align-items: center;
+-  justify-content: center;
+-  position: fixed;
+-  top: 0;
+-  left: 0;
+-  right: 0;
+-  bottom: 0;
+-  z-index: 999;
+-  opacity: 0;
+-  pointer-events: none;
+-  transition: opacity 0.3s;
++	display: flex;
++	align-items: center;
++	justify-content: center;
++	position: fixed;
++	top: 0;
++	left: 0;
++	right: 0;
++	bottom: 0;
++	z-index: 999;
++	opacity: 0;
++	pointer-events: none;
++	transition: opacity 0.3s;
+ }
+ 
+ .show-dialogue {
+-  opacity: 1;
+-  pointer-events: auto;
++	opacity: 1;
++	pointer-events: auto;
+ }
+ 
+ .fade-in {
+-  animation: fade-in 0.4s ease-in-out;
++	animation: fade-in 0.4s ease-in-out;
+ }
+ 
+ @keyframes fade-in {
+-  0% {
+-    opacity: 0;
+-  }
+-  100% {
+-    opacity: 1;
+-  }
++	0% {
++		opacity: 0;
++	}
++	100% {
++		opacity: 1;
++	}
+ }
+ </style>
+-
+diff --git a/components/Tooltip.vue b/components/Tooltip.vue
+index c36ad33..390182e 100644
+--- a/components/Tooltip.vue
++++ b/components/Tooltip.vue
+@@ -1,84 +1,80 @@
+ <template>
+-  <div class="tooltip-container">
+-    <span
+-      class="tooltip-trigger"
+-      @mouseover="showTooltip = true"
+-      @mouseout="showTooltip = false"
+-    >
+-      <slot></slot>
+-    </span>
+-    <!--  <div class="tooltip" :class="mode" v-show="showTooltip"> -->
++	<div class="tooltip-container">
++		<span
++			class="tooltip-trigger"
++			@mouseover="showTooltip = true"
++			@mouseout="showTooltip = false"
++		>
++			<slot></slot>
++		</span>
++		<!--  <div class="tooltip" :class="mode" v-show="showTooltip"> -->
+ 
+-    <div
+-      class="tooltip"
+-      :class="mode"
+-      :style="{ opacity: showTooltip ? 1 : 0 }"
+-    >
+-      <span v-html="text"></span>
+-    </div>
+-  </div>
++		<div class="tooltip" :class="mode" :style="{ opacity: showTooltip ? 1 : 0 }">
++			<span v-html="text"></span>
++		</div>
++	</div>
+ </template>
+ 
+ <style>
+ .tooltip-container {
+-  position: relative;
+-  display: inline-block;
++	position: relative;
++	display: inline-block;
+ }
+ 
+ .tooltip {
+-  position: absolute;
+-  background-color: #000;
+-  color: #fff;
+-  padding: 5px;
+-  border-radius: 4px;
+-  font-size: 14px;
+-  opacity: 0;
+-  transition: opacity 0.6s ease;
+-  white-space: nowrap;
++	position: absolute;
++	background-color: #000;
++	color: #fff;
++	padding: 5px;
++	border-radius: 4px;
++	font-size: 14px;
++	opacity: 0;
++	transition: opacity 0.6s ease;
++	white-space: nowrap;
+ }
+ 
+ .tooltip-trigger {
+-  cursor: pointer;
++	cursor: pointer;
+ }
+ 
+ .tooltip-container:hover .tooltip {
+-  opacity: 1;
++	opacity: 1;
+ }
+ 
+ .top {
+-  bottom: 100%;
++	bottom: 100%;
+ }
+ 
+ .bottom {
+-  top: 100%;
++	top: 100%;
+ }
+ 
+ .left {
+-  right: 100%;
++	right: 100%;
+ }
+ 
+ .right {
+-  left: 100%;
++	left: 100%;
+ }
+ </style>
+ 
+ <script>
+ export default {
+-  props: {
+-    text: {
+-      type: String,
+-      required: true,
+-    },
+-    mode: {
+-      type: String,
+-      default: 'top',
+-      validator: (value) => ['top', 'bottom', 'left', 'right'].includes(value),
+-    },
+-  },
+-  data() {
+-    return {
+-      showTooltip: false,
+-    }
+-  },
++	props: {
++		text: {
++			type: String,
++			required: true,
++		},
++		mode: {
++			type: String,
++			default: 'top',
++			validator: (value) => ['top', 'bottom', 'left', 'right'].includes(value),
++		},
++	},
++	data() {
++		return {
++			showTooltip: false,
++		}
++	},
+ }
+ </script>
+diff --git a/error.vue b/error.vue
+index d407c97..ce4cb90 100644
+--- a/error.vue
++++ b/error.vue
+@@ -2,13 +2,10 @@
+ 	<div class="text-center">
+ 		<p class="text-md">
+ 			The page
+-			<span class="font-bold">{{ $route.path }}</span> is not
+-			found.
++			<span class="font-bold">{{ $route.path }}</span> is not found.
+ 		</p>
+ 
+-		<NuxtLink class="p-2 text-base rounded-md w-fit" to="/">
+-			GO BACK
+-		</NuxtLink>
++		<NuxtLink class="p-2 text-base rounded-md w-fit" to="/"> GO BACK </NuxtLink>
+ 	</div>
+ </template>
+ 
+diff --git a/layouts/default.vue b/layouts/default.vue
+index aed0bba..3fd4b4c 100644
+--- a/layouts/default.vue
++++ b/layouts/default.vue
+@@ -1,44 +1,44 @@
+ <template>
+-  <div>
+-    <div class="flex mb-4 text-slate-100 dark:text-slate-200">
+-      <div class="p-1 flex space-x-2 inline-block">
+-        <NuxtLink
+-          to="/"
+-          class="flex font-bold text-base text-center items-center p-2 bg-indigo-400 dark:bg-stone-800 rounded-lg w-cover h-10 border-2 dark:border-zinc-500 dark:hover:border-zinc-100 hover:border-gray-300"
+-        >
+-          <img
+-            class="mr-1 w-4 h-4"
+-            src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fa90.svg"
+-          />Home
+-        </NuxtLink>
+-      </div>
++	<div>
++		<div class="flex mb-4 text-slate-100 dark:text-slate-200">
++			<div class="p-1 flex space-x-2 inline-block">
++				<NuxtLink
++					to="/"
++					class="flex font-bold text-base text-center items-center p-2 bg-indigo-400 dark:bg-stone-800 rounded-lg w-cover h-10 border-2 dark:border-zinc-500 dark:hover:border-zinc-100 hover:border-gray-300"
++				>
++					<img
++						class="mr-1 w-4 h-4"
++						src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fa90.svg"
++					/>Home
++				</NuxtLink>
++			</div>
+ 
+-      <div class="p-1 flex space-x-2 inline-block">
+-        <NuxtLink
+-          to="/about"
+-          class="flex font-bold text-base text-center items-center p-2 bg-indigo-400 dark:bg-stone-800 rounded-lg w-cover h-10 border-2 dark:border-zinc-500 dark:hover:border-zinc-100 hover:border-gray-300"
+-      >
+-          <img
+-            class="mr-1 w-4 h-4"
+-            src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4d1.svg"
+-          />About
+-        </NuxtLink>
+-      </div>
++			<div class="p-1 flex space-x-2 inline-block">
++				<NuxtLink
++					to="/about"
++					class="flex font-bold text-base text-center items-center p-2 bg-indigo-400 dark:bg-stone-800 rounded-lg w-cover h-10 border-2 dark:border-zinc-500 dark:hover:border-zinc-100 hover:border-gray-300"
++				>
++					<img
++						class="mr-1 w-4 h-4"
++						src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4d1.svg"
++					/>About
++				</NuxtLink>
++			</div>
+ 
+-      <div class="p-1 flex space-x-2 inline-block">
+-        <NuxtLink
+-          to="/photos"
+-          class="flex font-bold text-base text-center items-center p-2 bg-indigo-400 dark:bg-stone-800 rounded-lg w-cover h-10 border-2 dark:border-zinc-500 dark:hover:border-zinc-100 hover:border-gray-300"
+-        >
+-          <img
+-            class="mr-1 w-4 h-4"
+-            src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4bf.svg"
+-          />Photos
+-        </NuxtLink>
+-      </div>
+-    </div>
++			<div class="p-1 flex space-x-2 inline-block">
++				<NuxtLink
++					to="/photos"
++					class="flex font-bold text-base text-center items-center p-2 bg-indigo-400 dark:bg-stone-800 rounded-lg w-cover h-10 border-2 dark:border-zinc-500 dark:hover:border-zinc-100 hover:border-gray-300"
++				>
++					<img
++						class="mr-1 w-4 h-4"
++						src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4bf.svg"
++					/>Photos
++				</NuxtLink>
++			</div>
++		</div>
+ 
+-    <slot />
+-  </div>
++		<slot />
++	</div>
+ </template>
+ <style scope></style>
+diff --git a/layouts/env.vue b/layouts/env.vue
+index 26195e5..4ad43d9 100644
+--- a/layouts/env.vue
++++ b/layouts/env.vue
+@@ -1,10 +1,10 @@
+ <script lang="ts" setup></script>
+ 
+ <template>
+-  <div>
+-    Layout: env
+-    <slot />
+-  </div>
++	<div>
++		Layout: env
++		<slot />
++	</div>
+ </template>
+ 
+ <style scoped></style>
+diff --git a/nuxt.config.ts b/nuxt.config.ts
+index 35d29c3..e22f368 100644
+--- a/nuxt.config.ts
++++ b/nuxt.config.ts
+@@ -1,17 +1,17 @@
+ // https://nuxt.com/docs/api/configuration/nuxt-config
+ export default defineNuxtConfig({
+-  runtimeConfig: {
+-    openweathermap_key: process.env.OpenWeathermap_key,
+-    public: {
+-      api: '/api',
+-      weather_location: process.env.weather_location,
+-    },
+-  },
+-  css: ['~/assets/css/styles.css'],
+-  postcss: {
+-    plugins: {
+-      tailwindcss: {},
+-      autoprefixer: {},
+-    },
+-  },
++	runtimeConfig: {
++		openweathermap_key: process.env.OpenWeathermap_key,
++		public: {
++			api: '/api',
++			weather_location: process.env.weather_location,
++		},
++	},
++	css: ['~/assets/css/styles.css'],
++	postcss: {
++		plugins: {
++			tailwindcss: {},
++			autoprefixer: {},
++		},
++	},
+ })
+diff --git a/package.json b/package.json
+index f4a0aa2..1f5d689 100644
+--- a/package.json
++++ b/package.json
+@@ -1,22 +1,22 @@
+ {
+-  "name": "nuxt-app",
+-  "type": "module",
+-  "private": true,
+-  "scripts": {
+-    "build": "nuxt build",
+-    "dev": "nuxt dev",
+-    "generate": "nuxt generate",
+-    "preview": "nuxt preview",
+-    "postinstall": "nuxt prepare",
+-    "prettier": "npx prettier . --write"
+-  },
+-  "devDependencies": {
+-    "@nuxt/devtools": "latest",
+-    "@types/node": "^18",
+-    "autoprefixer": "^10.4.14",
+-    "nuxt": "^3.6.1",
+-    "postcss": "^8.4.24",
+-    "prettier": "3.0.0",
+-    "tailwindcss": "^3.3.2"
+-  }
++	"name": "nuxt-app",
++	"type": "module",
++	"private": true,
++	"scripts": {
++		"build": "nuxt build",
++		"dev": "nuxt dev",
++		"generate": "nuxt generate",
++		"preview": "nuxt preview",
++		"postinstall": "nuxt prepare",
++		"prettier": "npx prettier . --write"
++	},
++	"devDependencies": {
++		"@nuxt/devtools": "latest",
++		"@types/node": "^18",
++		"autoprefixer": "^10.4.14",
++		"nuxt": "^3.6.1",
++		"postcss": "^8.4.24",
++		"prettier": "3.0.0",
++		"tailwindcss": "^3.3.2"
++	}
+ }
+diff --git a/pages/about.vue b/pages/about.vue
+index 65bcc70..deb65de 100644
+--- a/pages/about.vue
++++ b/pages/about.vue
+@@ -1,113 +1,113 @@
+ <template>
+-  <div class="container sl-1">
+-    <div class="flex inline-block">
+-      <h1
+-        class="flex items-center hover:scale-110 duration-300 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-pink-600 text-bold"
+-      >
+-        Hiya
+-      </h1>
+-      <small>
+-        <h1
+-          @mouseenter="emoji = '❤️'"
+-          @mouseleave="emoji = '👋'"
+-          class="inline-flex"
+-        >
+-          {{ emoji }}
+-        </h1>
+-      </small>
+-    </div>
++	<div class="container sl-1">
++		<div class="flex inline-block">
++			<h1
++				class="flex items-center hover:scale-110 duration-300 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-pink-600 text-bold"
++			>
++				Hiya
++			</h1>
++			<small>
++				<h1
++					@mouseenter="emoji = '❤️'"
++					@mouseleave="emoji = '👋'"
++					class="inline-flex"
++				>
++					{{ emoji }}
++				</h1>
++			</small>
++		</div>
+ 
+-    <div>
+-      <div class="text-md text-slate-400 dark:text-gray-300 font-bold">
+-        {{ locationAndtime }}<br />{{ weather }}
+-      </div>
+-      <br />
+-      <p class="ml-0 w-fit border-b-2 border-teal-300 mb-4">
+-        Hey i am
+-        <button>
+-          <b>
+-            <span @click="toggleName">{{ name }}.</span>
+-          </b>
+-        </button>
+-      </p>
+-      <p>
+-        I am a
+-        <tooltip text='<span class="text-sm">2008/04/03</span>' mode="top"
+-          ><span :style="{ color: 'blue' }" v-html="age"></span></tooltip
+-        >-year-old kid who loves coding, music, and space stuff. Also i study in
+-        <a href="https://en.m.wikipedia.org/wiki/Nonformal_learning"
+-          >non-formal education</a
+-        >.
+-      </p>
+-    </div>
+-  </div>
++		<div>
++			<div class="text-md text-slate-400 dark:text-gray-300 font-bold">
++				{{ locationAndtime }}<br />{{ weather }}
++			</div>
++			<br />
++			<p class="ml-0 w-fit border-b-2 border-teal-300 mb-4">
++				Hey i am
++				<button>
++					<b>
++						<span @click="toggleName">{{ name }}.</span>
++					</b>
++				</button>
++			</p>
++			<p>
++				I am a
++				<tooltip text='<span class="text-sm">2008/04/03</span>' mode="top"
++					><span :style="{ color: 'blue' }" v-html="age"></span></tooltip
++				>-year-old kid who loves coding, music, and space stuff. Also i study in
++				<a href="https://en.m.wikipedia.org/wiki/Nonformal_learning"
++					>non-formal education</a
++				>.
++			</p>
++		</div>
++	</div>
+ </template>
+ 
+ <script>
+ import Tooltip from '@/components/Tooltip.vue'
+ 
+ export default {
+-  components: {
+-    Tooltip,
+-  },
+-  data() {
+-    return {
+-      name: 'Mac',
+-      age: 'N/A',
+-      weather: 'N/A',
+-      emoji: '👋',
+-      locationAndtime: 'N/A',
+-    }
+-  },
++	components: {
++		Tooltip,
++	},
++	data() {
++		return {
++			name: 'Mac',
++			age: 'N/A',
++			weather: 'N/A',
++			emoji: '👋',
++			locationAndtime: 'N/A',
++		}
++	},
+ 
+-  mounted() {},
+-  created() {
+-    setInterval(() => {
+-      this.age = this.calculateAge()
+-    }, 1000)
++	mounted() {},
++	created() {
++		setInterval(() => {
++			this.age = this.calculateAge()
++		}, 1000)
+ 
+-    $fetch('/api/weather')
+-      .then((weather) => {
+-        this.weather = `${weather.main.temp}°C, ${weather.weather[0].description}, ${weather.wind.speed}km/h`
+-      })
+-      .catch((error) => {
+-        console.error(error)
+-      })
++		$fetch('/api/weather')
++			.then((weather) => {
++				this.weather = `${weather.main.temp}°C, ${weather.weather[0].description}, ${weather.wind.speed}km/h`
++			})
++			.catch((error) => {
++				console.error(error)
++			})
+ 
+-    setInterval(this.DateAndTime, 1000, this.$config.public)
+-  },
+-  methods: {
+-    calculateAge() {
+-      const now = new Date()
+-      const birth = new Date(2008, 4, 3)
++		setInterval(this.DateAndTime, 1000, this.$config.public)
++	},
++	methods: {
++		calculateAge() {
++			const now = new Date()
++			const birth = new Date(2008, 4, 3)
+ 
+-      const difference = now - birth
+-      const age = difference / 1000 / 60 / 60 / 24 / 365
+-      return age.toFixed(6)
+-    },
++			const difference = now - birth
++			const age = difference / 1000 / 60 / 60 / 24 / 365
++			return age.toFixed(6)
++		},
+ 
+-    toggleName() {
+-      this.name = this.name === 'Mac' ? 'Windows' : 'Mac'
+-    },
+-    DateAndTime(pubconfig) {
+-      const date = new Date()
++		toggleName() {
++			this.name = this.name === 'Mac' ? 'Windows' : 'Mac'
++		},
++		DateAndTime(pubconfig) {
++			const date = new Date()
+ 
+-      const options = {
+-        hour: 'numeric',
+-        minute: 'numeric',
+-        second: 'numeric',
+-        hour12: true,
+-        timeZone: 'Asia/Bangkok',
+-        day: 'numeric',
+-        month: 'short',
+-        year: 'numeric',
+-      }
++			const options = {
++				hour: 'numeric',
++				minute: 'numeric',
++				second: 'numeric',
++				hour12: true,
++				timeZone: 'Asia/Bangkok',
++				day: 'numeric',
++				month: 'short',
++				year: 'numeric',
++			}
+ 
+-      const DateFmt = new Intl.DateTimeFormat('en-US', options)
+-      this.locationAndtime = `${pubconfig.weather_location}: ${DateFmt.format(
+-        date,
+-      )}`
+-    },
+-  },
++			const DateFmt = new Intl.DateTimeFormat('en-US', options)
++			this.locationAndtime = `${pubconfig.weather_location}: ${DateFmt.format(
++				date,
++			)}`
++		},
++	},
+ }
+ </script>
+diff --git a/pages/index.vue b/pages/index.vue
+index 71d0a4c..0284ec8 100644
+--- a/pages/index.vue
++++ b/pages/index.vue
+@@ -1,23 +1,17 @@
+ <template>
+-  <div class="dark">
+- 
+-    <PhotoBox
+-      :img="'https://placehold.co/600x400'" 
+-      :message="dialogueMessage">
+-test
+-
+-</PhotoBox>
+-
+-
+-  </div>
++	<div class="dark">
++		<PhotoBox :img="'https://placehold.co/600x400'" :message="dialogueMessage">
++			test
++		</PhotoBox>
++	</div>
+ </template>
+ <script lang="ts">
+ import PhotoBox from '@/components/PhotoBox.vue'
+ 
+ export default {
+-  name: 'PhotoBox',
+-  data() {
+-    return {}
+-  },
++	name: 'PhotoBox',
++	data() {
++		return {}
++	},
+ }
+ </script>
+diff --git a/pages/photos.vue b/pages/photos.vue
+index 74a9d1d..d574d65 100644
+--- a/pages/photos.vue
++++ b/pages/photos.vue
+@@ -1,28 +1,28 @@
+ <template>
+-  <div>
+-    <!-- Photo Grid -->
+-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+-      <div class="w-full max-w-md mx-auto bg-gray-800 rounded-lg shadow-md">
+-        <div class="text-base text-gray-300 p-1">2023/4/4 15:00</div>
+-        <img
+-          src="https://mayumi.vercel.app/banner.jpg"
+-          alt="Photo 1"
+-          class="w-full h-48 object-cover rounded-t-lg"
+-        />
+-        <div class="">
+-          <div class="p-1 mt-0.5 text-gray-200 shadow-sm">
+-            <!-- Details -->
+-            <div
+-              class="text-xs text-stone-100 p-1 rounded-md h-16 border border-gray-700 bg-gray-900 break-all"
+-            >
+-              Testtttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+-              description
+-            </div>
+-          </div>
+-        </div>
+-      </div>
+-    </div>
+-  </div>
++	<div>
++		<!-- Photo Grid -->
++		<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
++			<div class="w-full max-w-md mx-auto bg-gray-800 rounded-lg shadow-md">
++				<div class="text-base text-gray-300 p-1">2023/4/4 15:00</div>
++				<img
++					src="https://mayumi.vercel.app/banner.jpg"
++					alt="Photo 1"
++					class="w-full h-48 object-cover rounded-t-lg"
++				/>
++				<div class="">
++					<div class="p-1 mt-0.5 text-gray-200 shadow-sm">
++						<!-- Details -->
++						<div
++							class="text-xs text-stone-100 p-1 rounded-md h-16 border border-gray-700 bg-gray-900 break-all"
++						>
++							Testtttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
++							description
++						</div>
++					</div>
++				</div>
++			</div>
++		</div>
++	</div>
+ </template>
+ 
+ <script lang="ts"></script>
+diff --git a/parse.js b/parse.js
+index 4cc66a0..f81016a 100644
+--- a/parse.js
++++ b/parse.js
+@@ -3,7 +3,7 @@ var emoji = process.argv[2]
+ let hex = emoji.codePointAt(0).toString(16)
+ let emo = String.fromCodePoint('0x' + hex)
+ console.log(
+-  'https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/' +
+-    hex +
+-    '.svg',
++	'https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/' +
++		hex +
++		'.svg',
+ )
+diff --git a/postcss.config.ts b/postcss.config.ts
+index 33ad091..1b69d43 100644
+--- a/postcss.config.ts
++++ b/postcss.config.ts
+@@ -1,6 +1,6 @@
+ module.exports = {
+-  plugins: {
+-    tailwindcss: {},
+-    autoprefixer: {},
+-  },
++	plugins: {
++		tailwindcss: {},
++		autoprefixer: {},
++	},
+ }
+diff --git a/server/api/weather.ts b/server/api/weather.ts
+index 6d4b30c..1a31eb8 100644
+--- a/server/api/weather.ts
++++ b/server/api/weather.ts
+@@ -3,15 +3,15 @@
+ const config = useRuntimeConfig()
+ 
+ export default defineEventHandler(async () => {
+-  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${config.public.weather_location}&units=metric&appid=${config.openweathermap_key}`
+-  const encodedUrl = encodeURI(apiUrl)
++	const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${config.public.weather_location}&units=metric&appid=${config.openweathermap_key}`
++	const encodedUrl = encodeURI(apiUrl)
+ 
+-  try {
+-    const response = await fetch(encodedUrl)
+-    const data = await response.json()
+-    return data
+-  } catch (error) {
+-    console.error('Error fetching OpenWeatherMap API:', error)
+-    return null
+-  }
++	try {
++		const response = await fetch(encodedUrl)
++		const data = await response.json()
++		return data
++	} catch (error) {
++		console.error('Error fetching OpenWeatherMap API:', error)
++		return null
++	}
+ })
+diff --git a/server/tsconfig.json b/server/tsconfig.json
+index b9ed69c..d1dabed 100644
+--- a/server/tsconfig.json
++++ b/server/tsconfig.json
+@@ -1,3 +1,3 @@
+ {
+-  "extends": "../.nuxt/tsconfig.server.json"
++	"extends": "../.nuxt/tsconfig.server.json"
+ }
+diff --git a/tailwind.config.ts b/tailwind.config.ts
+index cd29c94..36a2bbc 100644
+--- a/tailwind.config.ts
++++ b/tailwind.config.ts
+@@ -1,16 +1,16 @@
+ /** @type {import('tailwindcss').Config} */
+ module.exports = {
+-  css: ['~/assets/css/styles.css'],
+-  content: [
+-    './components/**/*.{js,vue,ts}',
+-    './layouts/**/*.vue',
+-    './pages/**/*.vue',
+-    './plugins/**/*.{js,ts}',
+-    './nuxt.config.{js,ts}',
+-    './app.vue',
+-  ],
+-  theme: {
+-    extend: {},
+-  },
+-  plugins: [],
++	css: ['~/assets/css/styles.css'],
++	content: [
++		'./components/**/*.{js,vue,ts}',
++		'./layouts/**/*.vue',
++		'./pages/**/*.vue',
++		'./plugins/**/*.{js,ts}',
++		'./nuxt.config.{js,ts}',
++		'./app.vue',
++	],
++	theme: {
++		extend: {},
++	},
++	plugins: [],
+ }
+diff --git a/tsconfig.json b/tsconfig.json
+index a746f2a..947f6b6 100644
+--- a/tsconfig.json
++++ b/tsconfig.json
+@@ -1,4 +1,4 @@
+ {
+-  // https://nuxt.com/docs/guide/concepts/typescript
+-  "extends": "./.nuxt/tsconfig.json"
++	// https://nuxt.com/docs/guide/concepts/typescript
++	"extends": "./.nuxt/tsconfig.json"
+ }

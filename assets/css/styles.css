@@ -2,36 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 :root {
-  /* Light theme colors */
-  --font-color-light: #444444; /* black color */
-  --bg-color-light: #E8E8E8; /* white background */
+ /* Light theme colors */
+ --font-color-light: #444444; /* black color */
+ --bg-color-light: #e8e8e8; /* white background */
 
-  /* Dark theme colors */
-  --font-color-dark: #ffffff; /* white color */
-  --bg-color-dark: #18181b; /* dark background */
+ /* Dark theme colors */
+ --font-color-dark: #ffffff; /* white color */
+ --bg-color-dark: #18181b; /* dark background */
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
-    color: var(--font-color-dark);
-    background-color: var(--bg-color-dark);
-  }
+ body {
+  color: var(--font-color-dark);
+  background-color: var(--bg-color-dark);
+ }
 }
 
 body {
-  font-size: calc(10px + 0.33vw);
-  font-family: monospace;
-  scroll-behavior: smooth;
-  user-select: none;
-  color: var(--font-color-light);
-  background-color: var(--bg-color-light);
-  overflow-x: hidden;
+ font-size: calc(10px + 0.33vw);
+ font-family: monospace;
+ scroll-behavior: smooth;
+ user-select: none;
+ color: var(--font-color-light);
+ background-color: var(--bg-color-light);
+ overflow-x: hidden;
 }
-
-
 
 /*
 :root {
@@ -56,18 +52,18 @@ body {
 */
 
 .container {
-  padding: 5vh 6vw;
+ padding: 5vh 6vw;
 }
 
 h1 {
-  font-size: 4.5em;
-  font-weight: 500;
-  margin-bottom: 0;
+ font-size: 4.5em;
+ font-weight: 500;
+ margin-bottom: 0;
 }
 
 p {
-  font-size: 1.6em;
-  font-weight: 300;
-  line-height: 1.4;
-  max-width: 28em;
+ font-size: 1.6em;
+ font-weight: 300;
+ line-height: 1.4;
+ max-width: 28em;
 }
