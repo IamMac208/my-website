@@ -6,9 +6,15 @@
     <div class="w-full max-w-md mx-auto bg-zinc-300 dark:bg-neutral-900 border-2 rounded-lg shadow-md">
      <div class="text-base text-gray-500 dark:text-gray-300 p-1 font-bold">{{ item.time }}</div>
 
-<PhotoBox :img="item.url">
-     <img :src="item.url" class="w-full h-48 object-cover rounded-t-lg" />
-</PhotoBox>
+
+<div class="relative">
+  <img :src="item.url" class="w-full h-48 object-cover rounded-t-lg" />
+
+  <div class="absolute bottom-0 right-0">
+  <PhotoBox :img="item.url"/>
+  </div>
+</div>
+
 
 
      <div class="">

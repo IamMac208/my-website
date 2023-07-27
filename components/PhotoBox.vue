@@ -5,22 +5,33 @@
    class="dialogue shadow-md"
    :class="{ 'show-dialogue': animate }"
   >
-   <div class="dark:bg-gray-800 rounded-md">
-    <img
-     class="w-72 h-60 object-cover rounded-lg"
-     src="https://mayumi.vercel.app/banner.jpg"
+   <div class="">
+
+<div class="p-2">    
+<img
+     class="w-auto h-auto object-cover rounded-lg"
+     :src="img"
      alt=""
      :style="{ transform: animate ? 'rotate(360deg)' : 'none' }"
     />
+</div>
+
    </div>
   </div>
 
-  <button @click="toggleAnimation">test</button>
+  <button @click="toggleAnimation">full res</button>
+
  </div>
 </template>
 
 <script>
 export default {
+  props: {
+    img: {
+      type: String,
+      required: true
+    }
+  },
  data() {
   return {
    animate: false,
