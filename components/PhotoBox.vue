@@ -19,7 +19,7 @@
    </div>
   </div>
 
-  <button @click="toggleAnimation">full res</button>
+  <button @click="toggleAnimation" class="p-1">full res</button>
 
  </div>
 </template>
