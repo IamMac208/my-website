@@ -1,5 +1,0 @@
-Project todos:
-	Todo page(aka my life todo)
-	Photo API/Render on web
-	Visit counter(50/50(means cancel anytime))
-	
