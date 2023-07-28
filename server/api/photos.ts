@@ -4,8 +4,10 @@ const config = useRuntimeConfig();
 console.log(config);
 
 export default defineEventHandler(async () => {
-  const endpoint =
-    'https://raw.githubusercontent.com/azuremist208/assets/main/photos.yaml';
+  const endpoint = config.photo_data_file;
+
+//'https://raw.githubusercontent.com/azuremist208/assets/main/photos.yaml';
+
 
   try {
     const response = await fetch(endpoint);

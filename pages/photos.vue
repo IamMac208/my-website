@@ -3,7 +3,7 @@
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-2">
    <div v-for="(item, index) in PhotoData" :key="index">
     <div
-     class="w-full max-w-md mx-auto bg-white dark:bg-neutral-900 rounded-lg shadow-md"
+     class="w-full max-w-md mx-auto bg-white dark:bg-neutral-700 rounded-lg shadow-md"
     >
      <div class="text-base text-gray-500 dark:text-gray-300 p-1 font-bold">
       {{ item.time }}
@@ -22,7 +22,7 @@
      <div class="">
       <div class="p-1 mt-0.5 text-gray-200 shadow-sm">
        <div
-        class="text-xs text-stone-800 dark:text-stone-100 p-1 rounded-md font-semibold h-16 border border-zinc-500 bg-gray-100 dark:border-gray-700 dark:bg-slate-800 break-all font-bold"
+        class="text-xs text-stone-800 dark:text-stone-100 p-1 rounded-md font-semibold h-16 border border-zinc-500 bg-gray-100 dark:border-gray-700 dark:bg-stone-900 break-all font-bold"
        >
         {{ item.description }}
        </div>
