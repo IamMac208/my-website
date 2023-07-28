@@ -61,6 +61,7 @@ export default {
  opacity: 0;
  pointer-events: none;
  transition: opacity 0.3s;
+ background-color: rgba(0, 0, 0, 0.5);
 }
 
 .show-dialogue {

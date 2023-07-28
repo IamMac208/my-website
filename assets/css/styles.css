@@ -3,21 +3,12 @@
 @tailwind utilities;
 
 :root {
- /* Light theme colors */
- --font-color-light: #383838; /* black color */
- --bg-color-light: #e8e8e8; /* white background */
+ --font-color: black;
+ --bg-color: #f2f2f2;
 
- /* Dark theme colors */
- --font-color-dark: #ffffff; /* white color */
- --bg-color-dark: #18181b; /* dark background */
-}
-
-@media (prefers-color-scheme: dark) {
- body {
-  color: var(--font-color-dark);
-  background-color: var(--bg-color-dark);
  }
-}
+
+
 
 body {
  font-size: calc(10px + 0.33vw);
@@ -25,9 +16,15 @@ body {
  scroll-behavior: smooth;
  user-select: none;
  color: var(--font-color-light);
- background-color: var(--bg-color-light);
+ background-color: var(--bg-color);
  overflow-x: hidden;
+@media screen and (prefers-color-scheme: dark) {
+    color: #ffffff;
+    background-color: #1F1F1F;
+  }
 }
+
+
 
 /*
 :root {
