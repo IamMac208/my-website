@@ -13,8 +13,6 @@
      <div class="relative">
       <nuxt-img
        :src="item.url"
-       width="300"
-       height="169"
        quality="10"
        class="w-full h-48 object-cover rounded-t-lg"
       />
