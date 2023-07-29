@@ -18,11 +18,11 @@
   </div>
 
   <div>
-   <div class="text-md text-slate-400 dark:text-gray-300 font-bold">
+   <div class="text-md text-slate-700 dark:text-gray-300 font-bold">
     {{ locationAndtime }}<br />{{ weather }}
    </div>
    <br />
-   <p class="ml-0 w-fit border-b-2 border-teal-300 mb-4">
+   <p class="ml-0 w-fit border-b-2 border-b-sky-500 dark:border-teal-300 mb-4">
     Hey i am
     <button>
      <b>
@@ -34,7 +34,7 @@
     I am a
     <tooltip text='<span class="text-sm">2008/04/03</span>' mode="top"
      ><span :style="{ color: 'blue' }" v-html="age"></span></tooltip
-    >-year-old kid who loves coding, music, and space stuff. Also i study in
+    >-year-old kid who loves coding and space stuff. Also i study in
     <a href="https://en.m.wikipedia.org/wiki/Nonformal_learning"
      >non-formal education</a
     >.
