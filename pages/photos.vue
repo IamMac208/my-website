@@ -11,13 +11,17 @@
      </div>
 
      <div class="relative">
-      <nuxt-img :src="item.url" quality="10" class="w-full h-48 object-cover rounded-t-lg" />
-
+      <nuxt-img
+       :src="item.url"
+       width="300"
+       height="169"
+       quality="10"
+       class="w-full h-48 object-cover rounded-t-lg"
+      />
 
       <div class="absolute bottom-0 right-0">
-    <PhotoBox :img="item.url" />
-   
-       </div>
+       <PhotoBox :img="item.url" />
+      </div>
      </div>
 
      <div class="">
@@ -29,7 +33,6 @@
        </div>
       </div>
      </div>
-    
     </div>
    </div>
   </div>

@@ -1,8 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: [
-    '@nuxt/image',
-  ],
+ modules: ['@nuxt/image'],
+
+ image: {},
 
  runtimeConfig: {
   openweathermap_key: process.env.OpenWeathermap_key,
