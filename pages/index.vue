@@ -1,5 +1,8 @@
 <template>
- <div class="dark"></div>
+ <div class="text-center">
+What should i do with pages/index.vue?
+</div>
+
 </template>
 <script lang="ts">
 export default {

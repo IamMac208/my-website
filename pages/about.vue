@@ -30,7 +30,7 @@
      </b>
     </button>
    </p>
-   <p>
+   <p class="font-mono">
     I am a
     <tooltip text='<span class="text-sm">2008/04/03</span>' mode="top"
      ><span :style="{ color: 'blue' }" v-html="age"></span></tooltip
