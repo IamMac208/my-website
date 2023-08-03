@@ -3,7 +3,7 @@
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-2">
    <div v-for="(item, index) in PhotoData" :key="index">
     <div
-     class="w-full max-w-md mx-auto bg-white border-2 border-gray-100 dark:border-gray-700 dark:bg-neutral-700 rounded-lg shadow-lg"
+     class="w-full max-w-md mx-auto bg-white border-2 border-gray-100 dark:border-gray-700 dark:bg-zinc-800 rounded-lg shadow-lg"
     >
      <div class="text-base text-gray-500 dark:text-gray-300 p-1 font-bold">
       {{ item.time }}
@@ -11,11 +11,7 @@
      </div>
 
      <div class="relative">
-      <img
-       :src="item.url"
-     
-       class="w-full h-48 object-cover rounded-t-lg"
-      />
+      <img :src="item.url" class="w-full h-48 object-cover rounded-t-lg" />
 
       <div class="absolute bottom-0 right-0">
        <PhotoBox :img="item.url" />
