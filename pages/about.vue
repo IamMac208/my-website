@@ -23,7 +23,7 @@
    </div>
    <br />
    <p class="ml-0 w-fit border-b-2 border-b-sky-500 dark:border-teal-300 mb-4">
-    Hey i am
+    I am
     <button>
      <b>
       <span @click="toggleName">{{ name }}.</span>
@@ -37,7 +37,7 @@
     >-year-old kid who loves coding and space stuff. Also i study in
     <a href="https://en.m.wikipedia.org/wiki/Nonformal_learning"
      >non-formal education</a
-    >.
+    > untli high school.
    </p>
   </div>
  </div>
