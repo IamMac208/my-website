@@ -22,8 +22,8 @@
     {{ locationAndtime }}<br />{{ weather }}
    </div>
    <br />
-   <p class="ml-0 w-fit border-b-2 border-b-sky-500 dark:border-teal-300 mb-4">
-    I am
+   <p class="ml-0 w-fit border-b-2 border-b-sky-500 dark:border-teal-300 mb-4 font-mono">
+    Hey I'm
     <button>
      <b>
       <span @click="toggleName">{{ name }}.</span>
