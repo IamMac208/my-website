@@ -1,7 +1,7 @@
 import yaml from 'js-yaml'
 
 const config = useRuntimeConfig()
-console.log(config)
+
 
 export default defineEventHandler(async () => {
  const endpoint = config.photo_data_file
