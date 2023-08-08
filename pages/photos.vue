@@ -1,6 +1,6 @@
 <template>
  <div class="mb-8">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-2">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
    <div v-for="(item, index) in PhotoData" :key="index">
     <div
      class="w-full max-w-md mx-auto bg-white border-2 border-gray-100 dark:border-gray-700 dark:bg-zinc-800 rounded-lg shadow-lg hover:scale-105 duration-300 hover:border-teal-400"
@@ -14,7 +14,7 @@
       <img :src="item.url" class="w-full h-48 object-cover rounded-t-lg" />
 
       <div class="absolute bottom-0 right-0">
-       <PhotoBox :img="item.url" />
+       <a :href="item.url">original</a>
       </div>
      </div>
 
@@ -34,11 +34,8 @@
 </template>
 
 <script lang="ts">
-import PhotoBox from '@/components/PhotoBox'
-
 export default {
  components: {
-  PhotoBox,
  },
 
  setup() {
@@ -76,3 +73,4 @@ const { data, pending, error, refresh } = useFetch('https://api.nuxtjs.dev/mount
 }
 */
 </script>
+	
