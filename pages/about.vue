@@ -1,5 +1,5 @@
 <template>
-  <div class="sl-1 flex flex-col items-center">
+  <div class="">
 
 
 
@@ -15,27 +15,42 @@
       <div>{{ weather }}</div>
     </div>
 	  -->
-    <div class="mt-4 px-4">
-      <p class="ml-0 w-fit border-b-2 border-b-sky-500 dark:border-teal-300 mb-4 font-mono">
-        Hey I'm
-        <button>
-          <b>
-            <span @click="toggleName">{{ name }}.</span>
-          </b>
-        </button>
-      </p>
-    </div>
-
-<div class="mt-4 px-4 text-md text-slate-5	00 dark:text-g
+	  <!--
+<div class="mt-4 px-4 text-md text-slate-500 dark:text-g
 ray-300 font-bold">
       <div>{{ locationAndtime }}</div>
       <div>{{ weather }}</div>
-    </div>
+    </div>-->
+
+
+
+<div class="px-4 md:px-8 mt-8">
+    <h1 class="text-3xl font-bold">Hi there!</h1>
+    <p class="mt-4 text-md font-medium break-all">
+        I am a <tooltip text='<span class="text-sm">2008/04/03</span>'
+mode="top">
+        <span :style="{ color: 'blue' }" v-html="age"></span>
+      </tooltip>-year-old kid who loves coding and space stuff. Also, I study in
+        <a class="text-blue-400 underline" href="https://en.m.wikipedia.org/wiki/Nonformal_learning">
+            non-formal education
+        </a> until high school.
+    </p>
+</div>
+
+
+
+
+
+    <!--
 
     <div>
 
-    <p class="mt-4 font-mono px-4 text-center">
-      I am a
+
+<h1 class="px-4 md:px-8 text-3xl font-bold mt-8">Hi there 👋!</h1>
+
+
+    <p class="mt-4 px-4 md:px-8 text-md break-all font-medium">
+I am a
       <tooltip text='<span class="text-sm">2008/04/03</span>' mode="top">
         <span :style="{ color: 'blue' }" v-html="age"></span>
       </tooltip>-year-old kid who loves coding and space stuff. Also I study in
@@ -44,6 +59,10 @@ ray-300 font-bold">
       > until high school.
     </p>
     </div>
+
+    -->
+
+
 
   </div>
 </template>
