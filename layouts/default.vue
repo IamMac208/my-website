@@ -22,7 +22,7 @@
 export default {
   data() {
     return {
-      linkClasses: 'flex font-bold text-base text-center items-center p-2 bg-zinc-700 dark:bg-stone-900 rounded-lg w-cover h-10 border-2 border-gray-500 dark:border-gray-200 hover:border-teal-600 dark:hover:border-teal-500',
+      linkClasses: 'flex font-bold text-base text-center items-center p-2 bg-blue-800 dark:bg-stone-900 rounded-lg w-cover h-10 border-2 border-gray-500 dark:border-gray-200 hover:border-teal-600 dark:hover:border-teal-500',
       links: [
         {
           to: '/',
