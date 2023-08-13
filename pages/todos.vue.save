@@ -1,0 +1,30 @@
+<template>6
+
+    
+<div class="grid grid-cols-1 md:grid-cols-3 px-4">
+  <div class="col-span-1 md:col-span-3">
+    <h1 class="text-2xl font-semibold mb-4">Todo List</h1>
+  </div>
+  
+  <!-- Example Todo Item -->
+  <div class="bg-gray-200 p-4 rounded-lg mb-4 col-span-1 md:col-span-1">
+    <div class="flex items-center justify-between">
+      <div class="text-lg font-semibold">Complete Project</div>
+      <div class="text-gray-600">2 days left</div>
+    </div>
+    <p class="text-gray-700 mt-2">Finish coding the project and perform testing.</p>
+  </div>
+  	
+  <!-- Repeat the Todo Item div two more times for a total of 3 columns on larger screens -->
+</div>   
+
+
+</template>
+
+<script>
+export default {
+}
+</script>
+
+<style lang="css">
+</style>
