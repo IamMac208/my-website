@@ -4,11 +4,9 @@ const config = useRuntimeConfig()
 
 
 export default defineEventHandler(async () => {
- const endpoint = "https://raw.githubusercontent.com/alsobluestar/assets/main/testdata.yaml"
-
 
  try {
-  const response = await fetch(endpoint)
+  const response = await fetch(config.todoData)
 
   if (!response.ok) {
    throw new Error(`Failed to fetch data. Status: ${response.status}`)                    }
