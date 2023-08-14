@@ -9,17 +9,10 @@
       <a
         class="text-blue-400 underline"
         href="https://en.m.wikipedia.org/wiki/Nonformal_learning"
-      >
-        non-formal education
-      </a>
-      until high school.
-    </p>
-    <!--
+      >non-formal education</a> until high school.
 
-    <div class="text-lg">
-I'm a <a class="text-blue-500 font-medium hover:underline hover:decoration-indigo-500/30" href="example.com">Test</a> on instangram
-    </div>
--->
+    </p>
+    
   </div>
 </template>
 
