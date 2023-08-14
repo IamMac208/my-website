@@ -5,25 +5,18 @@
     </div>
 
     <div v-for="(item, index) in todoData.todos">
-
-<div class="bg-gray-200 dark:bg-zinc-700 p-4 rounded-lg
- mb-4 col-span-1 md:col-span-1 dark:text-zinc-200 border-2
-hover:scale-105 duration-300 hover:border-teal-400">
-      <div class="flex items-center justify-between">
-        <div class="text-lg font-semibold">{{ item.title }}	</div>
-        <div class="text-md font-bold">{{ formatTime(new Date(item.datetime)) }}</div>
+      <div
+        class="bg-gray-200 dark:bg-zinc-700 p-4 rounded-lg mb-4 col-span-1 md:col-span-1 dark:text-zinc-200 border-2 hover:scale-105 duration-300 hover:border-teal-400"
+      >
+        <div class="flex items-center justify-between">
+          <div class="text-lg font-semibold">{{ item.title }}</div>
+          <div class="text-md font-bold">
+            {{ formatTime(new Date(item.datetime)) }}
+          </div>
+        </div>
+        <p class="mt-2">{{ item.description }}</p>
       </div>
-      <p class="mt-2">{{ item.description }}</p>
     </div>
-
-
-
-</div>
-
-
-
-
-
   </div>
 </template>
 
@@ -85,4 +78,3 @@ export default {
 
 <!-- Export component if needed -->
 <!-- export default MyComponent -->
-
