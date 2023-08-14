@@ -1,7 +1,8 @@
 <template>
  <div class="mb-8">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
-   <div v-for="(item, index) in PhotoData" :key="index">
+   <div v-for="(item, index) in PhotoData.photos" :key="index">
+
     <div
      class="w-full max-w-md mx-auto bg-white border-2 border-gray-100 dark:border-gray-700 dark:bg-zinc-800 rounded-lg shadow-lg hover:scale-105 duration-300 hover:border-teal-400"
     >
@@ -46,31 +47,11 @@ export default {
   }
 
   return {
-   PhotoData: data,
+   PhotoData: data
   }
  },
 }
 
-/*
-export default {
- data() {
-  setup {
-const { data, pending, error, refresh } = useFetch('https://api.nuxtjs.dev/mountains',{
 
-
-    this.PhotoData = data;
-})
-
-   },
-
-  return {
-   PhotoData: null
-
-  }
- },
-
-
-}
-*/
 </script>
 	
