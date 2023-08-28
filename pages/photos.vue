@@ -16,7 +16,7 @@
               class="w-full h-48 object-cover rounded-t-lg"
             />
 
-            <div class="absolute bottom-0 right-0">
+            <div class="absolute bottom-0 right-0 mr-1">
               <a :href="item.url">original</a>
             </div>
           </div>
