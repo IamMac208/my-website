@@ -9,7 +9,7 @@ export default defineEventHandler(async () => {
     const response = await fetch(endpoint)
 
     if (!response.ok) {
-      throw new Error(`Failed to fetch data. Status: ${response.status}`)
+      
     }
 
     const data = await response.text()
